@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, Output } from "@angular/core";
+import { Component, EventEmitter, input, Input, Output } from "@angular/core";
 import { Course } from "../model/course";
+import { RequiredValidator } from "@angular/forms";
 
 @Component({
   selector: "course-card",
@@ -14,6 +15,9 @@ export class CourseCardComponent {
     }
   ) 
   course: Course;
+
+  @Input({required:true})
+  index: Number;
 
   @Output('courseSelected')
   courseEmitter = new EventEmitter<Course>();
