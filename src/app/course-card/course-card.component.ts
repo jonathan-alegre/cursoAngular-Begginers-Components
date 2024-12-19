@@ -43,4 +43,9 @@ export class CourseCardComponent {
 
     return { 'beginner': this.course.category == 'BEGINNER' }; //object configuration
   }
+
+  cardStyles(){
+    // return {'text-decoration': 'underline'};
+    return {'background-image': 'url(' + this.course.iconUrl + ')'};
+  }
 }
