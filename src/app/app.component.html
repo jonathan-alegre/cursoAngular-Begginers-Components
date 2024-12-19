@@ -5,6 +5,14 @@
 </div>
 
 <div class="courses">
+
+    <div class="demo">
+        <div>Start Date: {{startDate | date: 'dd/MM/yyyy'}}</div>
+        <div>{{title | titlecase}}</div>
+        <div>{{price | number: '3.3-5'}}</div>
+        <div>{{price | currency: 'ARS'}}</div>
+        <div>Percentage: {{rate | percent}}</div>
+    </div>
     
     <!-- ** USO DE @for **  -->
     <!-- @for (course of courses; track course.id; let index = $index; let count = $count;
@@ -24,8 +32,14 @@
         <h1>No courses found!</h1>
     } -->
 
+    <!-- {{courses | json}} -->
+
+    <div *ngFor="let pair of course | keyvalue">
+        {{pair.key}}: {{pair.value}}
+    </div>
+
     <!-- ** USO DE ngFor **  -->
-    <course-card *ngFor="let course of courses; index as i; 
+    <course-card *ngFor="let course of courses | slice: 0:3; index as i; 
                          first as isFirst; last as isLast;
                          even as isEven; odd as isOdd"
         (courseSelected)="onCourseSelected($event)" 
